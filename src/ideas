@@ -1,0 +1,34 @@
+// produire une liste de liens avec les noms des utilisateurs:
+
+const users = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Claire' },
+  { id: 4, name: 'David' },
+]
+
+render () {
+  return (
+    <div className="userList">
+      {this.props.users.map((user) => (
+        <a href={`/users/${user.id}`} key={user.id}>{user.name}</a>
+      ))}
+    </div>
+  )
+}
+
+// même chose mais en déstructurant l'élément reçu dans la fonction de rappel:
+
+render () {
+  return (
+    <div className="userList">
+      {this.props.users.map(({ id, name }) => (
+        <a href={`/users/${id}`} key={id}>{name}</a>
+      ))}
+    </div>
+  )
+}
+
+
+https://code.tutsplus.com/tutorials/working-with-tables-in-react-part-two--cms-29683
+https://codepen.io/pjmtokyo/pen/ZGVjVV
