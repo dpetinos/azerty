@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import BootstrapTable from 'react-bootstrap-table-next';
 import './Table.css';
-import '../../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css'
-
 
 function onSelectRow(row, isSelected, e) {
   if (isSelected) {
@@ -18,30 +16,20 @@ const selectRowProp = {
   onSelect: onSelectRow,
   bgColor: 'gold'
 };
- 
-class Table4 extends Component {
+
+class Table1 extends Component {
   render() {
     return (
       <div>
-        <BootstrapTable data={this.props.data} 
-                        selectRow={selectRowProp}
-        >
-          <TableHeaderColumn isKey dataField='id'
-          >
-            ID
-          </TableHeaderColumn>
-          <TableHeaderColumn dataField='name'
-          >
-            Name
-          </TableHeaderColumn>
-          <TableHeaderColumn dataField='value'
-          >
-            Value
-          </TableHeaderColumn>
-        </BootstrapTable>
+        <BootstrapTable 
+          keyField='id'
+          data={this.props.data}
+          columns={this.props.columns}
+          striped hover condensed
+        />
       </div>
     )
   }
 }
  
-export default Table4
+export default Table1
