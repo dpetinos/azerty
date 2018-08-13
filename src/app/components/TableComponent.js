@@ -5,6 +5,7 @@ import { makeData } from "../../Utils";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
+import Card from './Card';
 
 
 const rawData = makeData();
@@ -129,6 +130,7 @@ class TableComponent extends React.Component {
           defaultPageSize={10}
           className="-striped -highlight"
         />
+        <Card name="Emily" />
       </div>
     );
   }
