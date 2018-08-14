@@ -1,5 +1,10 @@
 import React from 'react';
-import { render } from 'react-dom';
-import App from './App';
+import ReactDOM from 'react-dom';
+import App from './App'
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
-render(<App />, document.getElementById("root"));
+const root = document.getElementById('root');
+
+ReactDOM.render(
+	<App/>,
+root);

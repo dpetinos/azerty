@@ -50,6 +50,10 @@ const requestData = (pageSize, page, sorted, filtered) => {
   });
 };
 
+// displayCard = (index, e) => {
+
+// }
+
 class TableComponent extends React.Component {
   constructor() {
     super();
@@ -93,6 +97,8 @@ class TableComponent extends React.Component {
                 console.log("It was in this column:", column);
                 console.log("It was in this row:", rowInfo);
                 console.log("It was in this table instance:", instance);
+
+                // displayCard(index,)
 
                 // IMPORTANT! React-Table uses onClick internally to trigger
                 // events like expanding SubComponents and pivots.
