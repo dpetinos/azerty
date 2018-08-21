@@ -12,6 +12,9 @@ const Header = ({ adjective = 'Cool' }) => {
                     <a className="active" href="#home">Home</a>
                     <a href="#lang">Lang</a>
                 </div>
+                <br />
+                <br />
+                <p>[Header stops here]</p>
             </div> 
     )
 }
