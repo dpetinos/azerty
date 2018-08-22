@@ -1,11 +1,11 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import _ from "lodash";
 import { makeData } from "../../Utils";
 
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
-import Card from './Card';
 
 
 const rawData = makeData();
@@ -50,9 +50,8 @@ const requestData = (pageSize, page, sorted, filtered) => {
   });
 };
 
-// displayCard = (index, e) => {
 
-// }
+
 
 class TableComponent extends React.Component {
   constructor() {
@@ -63,7 +62,10 @@ class TableComponent extends React.Component {
       loading: true
     };
     this.fetchData = this.fetchData.bind(this);
+    // this.handleRowClick = this.handleRowClick.bind(this);
+    this.onRowClick = this.onRowClick.bind(this);
   }
+
   fetchData(state, instance) {
     // Whenever the table model changes, or the user sorts or changes pages, this method gets called and passed the current table model.
     // You can set the `loading` prop of the table to true to use the built-in one or show you're own loading bar if you want.
@@ -83,34 +85,58 @@ class TableComponent extends React.Component {
       });
     });
   }
+
+  onRowClick(state, rowInfo, column, instance, index) {
+  return {
+    onClick: e => {
+    console.log("A ROW WAS CLICKED BY MEEEEEEE 222222 !");
+    // console.log("it produced this event:", e);
+    console.log("It was in this column:", column);
+    console.log("It was in this row:", rowInfo);
+    console.log("It was in this table instance:", instance);
+    console.log("state", state);
+    console.log(rowInfo.row.firstName);
+
+    const robots_details_link = `/card/${ rowInfo.index }`;
+
+    console.log(robots_details_link),
+
+    // ajouter les paramètres, arriver à display la carte au click
+    <Link to={ robots_details_link }></Link> 
+    }
+  }
+}
+
+  // handleRowClick(e, column, rowInfo, instance, state) {
+  //     console.log("A ROW WAS CLICKED BY MEEEEEEE !");
+  //     console.log("it produced this event:", e);
+  //     console.log("It was in this column:", column);
+  //     console.log("It was in this row:", rowInfo);
+  //     console.log("It was in this table instance:", instance);
+  //     const detailInfo = this.props.data;
+  //     console.log("state", state);
+  //     console.log(rowInfo.row.firstName);
+
+  //     const robots_details_link = `/card/${ rowInfo.row.firstName }`;
+
+
+  //     return (
+  //       // <Card name={rowInfo.row.firstName} />
+  //       console.log("dans le return"),
+  //       console.log(robots_details_link),
+  //       <Link to={ robots_details_link }></Link>
+  //     )
+  // }
+
+  
+
   render() {
     const { data, pages, loading } = this.state;
     return (
       // When any Td element is clicked, we'll log out some information
       <div>
         <ReactTable
-          getTdProps={(state, rowInfo, column, instance) => {
-            return {
-              onClick: (e, handleOriginal) => {
-                console.log("A Td Element was clicked!");
-                console.log("it produced this event:", e);
-                console.log("It was in this column:", column);
-                console.log("It was in this row:", rowInfo);
-                console.log("It was in this table instance:", instance);
-
-                // displayCard(index,)
-
-                // IMPORTANT! React-Table uses onClick internally to trigger
-                // events like expanding SubComponents and pivots.
-                // By default a custom 'onClick' handler will override this functionality.
-                // If you want to fire the original onClick handler, call the
-                // 'handleOriginal' function.
-                if (handleOriginal) {
-                  handleOriginal();
-                }
-              }
-            };
-          }}
+          getTdProps={this.onRowClick}
 
           columns={[
             {
@@ -136,7 +162,6 @@ class TableComponent extends React.Component {
           defaultPageSize={10}
           className="-striped -highlight"
         />
-        <Card name="Emily" />
       </div>
     );
   }

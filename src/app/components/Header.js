@@ -15,10 +15,7 @@ const Header = ({ adjective = 'Cool' }) => {
                     <a href="#lang">Lang</a>
 
                     <li><Link to='/'>Home</Link></li>
-
-                    <Route path='/card' render={(props) => (
-                      <Card {...props} data={props.name="Samy"}/>
-                    )}/>
+                    <li><Link to='/card'>Card</Link></li>
 
 
                 </div>

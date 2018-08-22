@@ -9,8 +9,8 @@ import Card from './Card'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={TableComponent}/>
-      <Route path='/card' component={Card}/>
+      <Route exact path='/' component={TableComponent} />
+      <Route path='/card/:index' component={Card} />
     </Switch>
   </main>
 )
