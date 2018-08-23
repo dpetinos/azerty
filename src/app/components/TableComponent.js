@@ -95,39 +95,23 @@ class TableComponent extends React.Component {
     console.log("It was in this row:", rowInfo);
     console.log("It was in this table instance:", instance);
     console.log("state", state);
-    console.log(rowInfo.row.firstName);
 
-    const robots_details_link = `/card/${ rowInfo.index }`;
+    const robots_details_link = {
+      pathname: `/card/${ rowInfo.index }`,
+      param1: column,
+      param2: rowInfo,
+      param3: instance
+    };
 
-    console.log(robots_details_link),
+    console.log("robots_details_link = an object now babe", robots_details_link)
 
     // ajouter les paramètres, arriver à display la carte au click
-    <Link to={ robots_details_link }></Link> 
+    // <Link to={ robots_details_link }>
+    // <Link to='/card'>
+    // </Link> 
     }
   }
 }
-
-  // handleRowClick(e, column, rowInfo, instance, state) {
-  //     console.log("A ROW WAS CLICKED BY MEEEEEEE !");
-  //     console.log("it produced this event:", e);
-  //     console.log("It was in this column:", column);
-  //     console.log("It was in this row:", rowInfo);
-  //     console.log("It was in this table instance:", instance);
-  //     const detailInfo = this.props.data;
-  //     console.log("state", state);
-  //     console.log(rowInfo.row.firstName);
-
-  //     const robots_details_link = `/card/${ rowInfo.row.firstName }`;
-
-
-  //     return (
-  //       // <Card name={rowInfo.row.firstName} />
-  //       console.log("dans le return"),
-  //       console.log(robots_details_link),
-  //       <Link to={ robots_details_link }></Link>
-  //     )
-  // }
-
   
 
   render() {
@@ -137,6 +121,12 @@ class TableComponent extends React.Component {
       <div>
         <ReactTable
           getTdProps={this.onRowClick}
+          getTrProps={(state, rowInfo) => {
+            return {
+              onClick: ()=> this.props.history.push(`card/${rowInfo.index}`)
+            }
+          }
+        }
 
           columns={[
             {
