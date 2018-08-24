@@ -10,11 +10,9 @@ import Footer from './app/components/Footer';
 
 const App = () => (
       <div>
-
           <Header />
           <Main />
           <Footer />
-
       </div>
 )
 

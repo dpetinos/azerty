@@ -97,7 +97,7 @@ class TableComponent extends React.Component {
     console.log("state", state);
 
     const robots_details_link = {
-      pathname: `/card/${ rowInfo.index }`,
+      pathname: `/robot/${ rowInfo.index }`,
       param1: column,
       param2: rowInfo,
       param3: instance
@@ -117,13 +117,20 @@ class TableComponent extends React.Component {
   render() {
     const { data, pages, loading } = this.state;
     return (
-      // When any Td element is clicked, we'll log out some information
+      // When any Td element is clicked, we'll go to the matching detail card component
       <div>
         <ReactTable
           getTdProps={this.onRowClick}
-          getTrProps={(state, rowInfo) => {
+          getTrProps={(state, rowInfo, column, instance, index) => {
+
             return {
-              onClick: ()=> this.props.history.push(`card/${rowInfo.index}`)
+              onClick: ()=> {
+                const robots_details_link = {
+                  pathname: `/robot/${ rowInfo.index }`,
+                  rowInfo: rowInfo
+                };
+                this.props.history.push(robots_details_link)
+              } 
             }
           }
         }

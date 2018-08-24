@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import Home from './Home'
 import TableComponent from './TableComponent'
 import Card from './Card'
 
@@ -9,8 +10,9 @@ import Card from './Card'
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={TableComponent} />
-      <Route path='/card/:index' component={Card} />
+      <Route exact path='/' component={Home} />
+      <Route exact path='/list' component={TableComponent} />
+      <Route path='/robot/:index' component={Card} />
     </Switch>
   </main>
 )
