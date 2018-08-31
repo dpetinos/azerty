@@ -1,4 +1,3 @@
-import React from "react";
 import namor from "namor";
 // import "./index.css";
 
@@ -37,3 +36,13 @@ export function makeData(len = 5553) {
 export function capitalizeFirstLetter(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+export function createJson() {
+  var obj = {
+     table: []
+  };
+  obj.table.push(makeData());
+  var json = JSON.stringify(obj);
+  var fs = require('fs');
+  fs.writeFile('robot_list.json', json, 'utf8');
+}

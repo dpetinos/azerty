@@ -51,3 +51,9 @@
     float: none;
   }
 }
+
+header img {
+  max-height: 48px;
+  float: left;
+  padding-right: 10px;
+}

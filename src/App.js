@@ -3,9 +3,9 @@ import './App.css';
 
 // Import React Table
 import "react-table/react-table.css";
-import Main from './app/components/Main';
-import Header from './app/components/Header';
-import Footer from './app/components/Footer';
+import Main from './app/components/Main.jsx';
+import Header from './app/components/Header.jsx';
+import Footer from './app/components/Footer.jsx';
 
 
 const App = () => (

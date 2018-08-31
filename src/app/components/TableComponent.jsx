@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import _ from "lodash";
-import { makeData } from "../../Utils";
+import { makeData, createJson } from "../../Utils";
+
 
 // Import React Table
 import ReactTable from "react-table";
@@ -9,6 +10,7 @@ import "react-table/react-table.css";
 
 
 const rawData = makeData();
+
 
 const requestData = (pageSize, page, sorted, filtered) => {
   return new Promise((resolve, reject) => {
@@ -51,6 +53,35 @@ const requestData = (pageSize, page, sorted, filtered) => {
 };
 
 
+const onRowClick = (state, rowInfo, column, instance, index) => {
+  return {
+    onClick: e => {
+      console.log("Dans le onRowClick");
+      console.log("A ROW WAS CLICKED BY MEEEEEEE 222222 !");
+      // console.log("it produced this event:", e);
+      console.log("It was in this column:", column);
+      console.log("It was in this row:", rowInfo);
+      console.log("It was in this table instance:", instance);
+      console.log("state", state);
+
+      const robots_details_link = {
+        pathname: `/robot/${ rowInfo.index }`,
+        param1: column,
+        param2: rowInfo,
+        param3: instance
+      };
+
+      console.log("robots_details_link = an object now babe", robots_details_link);
+      
+      // ajouter les paramètres, arriver à display la carte au click
+      
+      <Link to='/card'>blabla</Link>
+      
+      // <Link to='/card'>
+      
+    }
+  }
+};
 
 
 class TableComponent extends React.Component {
@@ -63,7 +94,7 @@ class TableComponent extends React.Component {
     };
     this.fetchData = this.fetchData.bind(this);
     // this.handleRowClick = this.handleRowClick.bind(this);
-    this.onRowClick = this.onRowClick.bind(this);
+    // this.onRowClick = this.onRowClick.bind(this);
   }
 
   fetchData(state, instance) {
@@ -86,32 +117,7 @@ class TableComponent extends React.Component {
     });
   }
 
-  onRowClick(state, rowInfo, column, instance, index) {
-  return {
-    onClick: e => {
-    console.log("A ROW WAS CLICKED BY MEEEEEEE 222222 !");
-    // console.log("it produced this event:", e);
-    console.log("It was in this column:", column);
-    console.log("It was in this row:", rowInfo);
-    console.log("It was in this table instance:", instance);
-    console.log("state", state);
-
-    const robots_details_link = {
-      pathname: `/robot/${ rowInfo.index }`,
-      param1: column,
-      param2: rowInfo,
-      param3: instance
-    };
-
-    console.log("robots_details_link = an object now babe", robots_details_link)
-
-    // ajouter les paramètres, arriver à display la carte au click
-    // <Link to={ robots_details_link }>
-    // <Link to='/card'>
-    // </Link> 
-    }
-  }
-}
+  
   
 
   render() {
@@ -120,7 +126,7 @@ class TableComponent extends React.Component {
       // When any Td element is clicked, we'll go to the matching detail card component
       <div>
         <ReactTable
-          getTdProps={this.onRowClick}
+          // getTdProps={onRowClick}
           getTrProps={(state, rowInfo, column, instance, index) => {
 
             return {
@@ -134,6 +140,13 @@ class TableComponent extends React.Component {
             }
           }
         }
+
+          // Cell: cell => {
+          //   return (
+          //     <Link to="/card"> </Link>
+          //   );
+          // }
+
 
           columns={[
             {

@@ -7,7 +7,7 @@ const Card = (props) => {
 	const cardIndex = props.match.params.index;
 
 	console.log( "cardIndex", cardIndex );
-	console.log("DANS LE CARD COMPNEnt !!!!!")
+	console.log("Dans le Card Component");
 	console.log("A ROW WAS CLICKED BY MEEEEEEE 33333333 !");
     console.log("history", props.history);
     console.log("location", props.location);
@@ -24,7 +24,7 @@ const Card = (props) => {
 			<p>My name is {firstName} {lastName}, and I'm {age} years old.</p>
 			<p>The card component neds to actually be displaying information about robots.</p>
 			<p> yeah, I know Jim...</p>
-			<Link to='/'>Back</Link>
+			<Link to='/list'>Back</Link>
 		</div>
 	);
 }

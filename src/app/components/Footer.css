@@ -1,0 +1,20 @@
+.root_element {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: normal;
+    box-shadow: 8px -8px 24px -8px #7D7D7D; 
+}
+
+.copyright,
+.logo {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.logo {
+    text-align: right;
+}
+
+footer img {
+    max-height: 48px;
+}
